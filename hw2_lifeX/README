@@ -1,0 +1,5 @@
+The code is written in c++ and can be run under linux and macOS.
+Local alignment is using Smith-Waterman algorithm, with s_match=3, s_mismatch=-3, gap panelty=2.
+You can use ./run.sh to compile and execute the source code.
+The result species will be directly printed out.
+To change the input, please see line 88, 89 in hw2.cpp.
