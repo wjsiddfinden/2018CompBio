@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include <string.h>
 #include <vector>
@@ -15,16 +16,31 @@ string Reverse(string str){
 	return temp;
 	}
 
+string ReadFile(string filename){
+	
+	ifstream File;
+	string str, str1;
+	
+	File.open(filename);
+	while(getline(File, str)){
+		str1 = str;
+		}
+	File.close();
+	return str1;
+	}
+
 int main(){
-	string S1="GAATTCAGTTA";
-	string S2="GGATCGA";
+	
+	string S1=ReadFile("seq1.fa");
+	string S2=ReadFile("seq2.fa");
+
 	int M=S1.length(), N=S2.length();
 	int s, s_match=2, s_mismatch=-1, w=-2;
 	int Scoring[M+1][N+1];
 	int Direction[M][N];
 	int v[3];
 	int max, index;
-
+	
 	// Matrix fill
 	for(int i=0;i<M+1;i++){Scoring[i][0]=0;}
 	for(int j=0;j<N+1;j++){Scoring[j][0]=0;}
@@ -42,7 +58,7 @@ int main(){
 			Direction[i-1][j-1]=index;
 			}
 		}
-	
+
 	// traceback-->function
 	int i=M-1, j=N-1;
 	string aS1, aS2;
@@ -69,7 +85,13 @@ int main(){
 	
 	aS1=Reverse(aS1);
 	aS2=Reverse(aS2);	
-	cout << aS1 << '\n' << aS2 << endl;
+	// cout << aS1 << '\n' << aS2 << endl;
+
+	string o_filename="alignment.dat";
+	ofstream outfile;
+	outfile.open(o_filename);
+	outfile << aS1 << '\n' << aS2;
+	outfile.close();
 	}
 
 	

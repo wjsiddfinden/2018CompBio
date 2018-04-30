@@ -1,0 +1,3 @@
+This is an alignment program wrote in c++. It can be run in linux and macOS environment.
+The source code is "hw1.cpp". You can compile and execute it by running file "run.sh"
+Make sure there are two input file, "seq1.fa" and "seq2.fa" in the same directory of the code. These two file contain two input sequences seperately. The result will be generated in "alignment.dat"
